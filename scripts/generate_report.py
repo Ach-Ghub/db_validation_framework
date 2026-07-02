@@ -1,7 +1,10 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
 
-DATABASE_URL = "mysql+pymysql://root:@localhost:3306/db_ecomerce_etl"
+import os
+
+# If running inside Docker, use the environment variable; otherwise, fallback to local XAMPP
+DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://root:@localhost:3306/db_ecomerce_etl")
 engine = create_engine(DATABASE_URL)
 
 def generate_dashboard():
