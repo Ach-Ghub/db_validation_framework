@@ -17,3 +17,22 @@ db_validation_framework/
 │   └── validation_engine.py  # Automation validation framework
 ├── requirements.txt       # Core dependencies
 └── README.md              # Documentation
+
+## 📊 Sample Validation Run Output
+
+```text
+==================================================
+🚀 STARTING ETL DATA VALIDATION CHECKS
+==================================================
+🔍 Checking for duplicate records in orders.csv...
+❌ FAIL: Found 2 duplicate row references!
+   order_id  user_id  order_date  total_amount
+1       102        2  2026-01-06          25.5
+2       102        2  2026-01-06          25.5
+
+🔍 Checking for Foreign Key violations (Orphaned Orders)...
+❌ FAIL: Found 1 orphaned order record(s) referencing non-existent users!
+ -> Order ID: 103 references missing User ID: 99
+==================================================
+🏁 ETL VALIDATION RUN COMPLETE
+==================================================
